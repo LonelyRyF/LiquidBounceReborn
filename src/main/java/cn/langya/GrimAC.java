@@ -1,4 +1,4 @@
-package net.ccbluex.liquidbounce.features.module.modules.hyt;
+package cn.langya;
 
 // 魔改了派蒙神的东西
 

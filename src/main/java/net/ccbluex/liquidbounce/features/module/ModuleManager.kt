@@ -1,7 +1,7 @@
 package net.ccbluex.liquidbounce.features.module
 
+import cn.langya.*
 import cn.liying.module.combat.KillFix
-import net.ccbluex.liquidbounce.features.module.modules.hyt.HytScaffoldFix
 import net.ccbluex.liquidbounce.LiquidBounce
 import net.ccbluex.liquidbounce.event.EventTarget
 import net.ccbluex.liquidbounce.event.KeyEvent

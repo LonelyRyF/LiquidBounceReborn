@@ -41,9 +41,7 @@ class Velocity : Module() {
     private var attacked = false
     private var motionNoXZ = 0.0
     private var lastSprinting = false
-
     val mc = mc2
-
 
     @EventTarget
     fun onU(event: UpdateEvent) {
