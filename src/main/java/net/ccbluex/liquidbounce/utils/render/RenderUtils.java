@@ -40,6 +40,14 @@ public final class RenderUtils extends MinecraftInstance {
     private static final Map<Integer, Boolean> glCapMap = new HashMap<>();
     private static final int[] DISPLAY_LISTS_2D = new int[4];
     public static int deltaTime;
+
+    public static Color getColor(final int color) {
+        final int f = color >> 24 & 0xFF;
+        final int f2 = color >> 16 & 0xFF;
+        final int f3 = color >> 8 & 0xFF;
+        final int f4 = color & 0xFF;
+        return new Color(f2, f3, f4, f);
+    }
     public static void drawSmoothRect(double left, double top, double right, double bottom, int color) {
         GlStateManager.resetColor();
         GL11.glEnable(GL11.GL_BLEND);

@@ -38,7 +38,7 @@ class NoSlow : Module() {
 
     private val packet = BoolValue("Packet", false)
     private val msTimer = MSTimer()
-    private val modeValue = ListValue("PacketMode", arrayOf("Hyt","GrimAC","AntiCheat", "Custom", "NCP", "AAC", "AAC5"), "Hyt")
+    private val modeValue = ListValue("PacketMode", arrayOf("Hyt","GrimAC","AntiCheat", "Custom", "NCP", "AAC", "AAC5"), "GrimAC")
     private val blockForwardMultiplier = FloatValue("BlockForwardMultiplier", 1.0F, 0.2F, 1.0F)
     private val blockStrafeMultiplier = FloatValue("BlockStrafeMultiplier", 1.0F, 0.2F, 1.0F)
     private val consumeForwardMultiplier = FloatValue("ConsumeForwardMultiplier", 1.0F, 0.2F, 1.0F)
@@ -118,12 +118,17 @@ class NoSlow : Module() {
                 }
             }
             "hyt" -> {
-                if (mc.thePlayer!!.isBlocking || isBlock()) {
+                if (mc.thePlayer!!.isBlocking || isBlock() && event.eventState == EventState.PRE) {
                     mc2.connection!!.sendPacket(CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN))
                     mc2.connection!!.sendPacket(CPacketHeldItemChange((mc2.player.inventory.currentItem + 1) % 9))
                     mc2.connection!!.sendPacket(CPacketConfirmTransaction(Integer.MAX_VALUE, 32767.toShort(), true))
                     mc2.connection!!.sendPacket(CPacketHeldItemChange(mc2.player.inventory.currentItem))
                 }
+
+                if (mc.thePlayer!!.isBlocking || isBlock() && event.eventState == EventState.POST) {
+                    mc2.connection!!.sendPacket(CPacketPlayerTryUseItem(EnumHand.MAIN_HAND))
+                }
+
             }
             "grimac" -> {
                 if (!mc2.player.isActiveItemStackBlocking) return

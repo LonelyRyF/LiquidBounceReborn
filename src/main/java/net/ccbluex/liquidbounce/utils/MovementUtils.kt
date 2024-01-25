@@ -10,6 +10,9 @@ import kotlin.math.sqrt
 
 object MovementUtils : MinecraftInstance() {
     var bps = 0.0
+
+    val movingYaw: Float
+        get() = (direction * 180f / Math.PI).toFloat()
     val speed: Float
         get() = sqrt(mc.thePlayer!!.motionX * mc.thePlayer!!.motionX + mc.thePlayer!!.motionZ * mc.thePlayer!!.motionZ).toFloat()
     fun setMotion(speed: Double) {

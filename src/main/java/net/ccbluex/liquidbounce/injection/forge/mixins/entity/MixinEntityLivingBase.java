@@ -1,5 +1,11 @@
+/*
+ * LiquidBounce Base
+ * God SkidBounce
+ * Conding
+ */
 package net.ccbluex.liquidbounce.injection.forge.mixins.entity;
 
+import cn.paimon.module.StrafeFix;
 import net.ccbluex.liquidbounce.LiquidBounce;
 import net.ccbluex.liquidbounce.event.JumpEvent;
 import net.ccbluex.liquidbounce.event.StrafeEvent;
@@ -30,7 +36,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Objects;
 
 @Mixin(EntityLivingBase.class)
-public abstract class MixinEntityLivingBase extends MixinEntity {
+public abstract class MixinEntityLivingBase extends net.ccbluex.liquidbounce.injection.forge.mixins.entity.MixinEntity {
     @Shadow
     public int activeItemStackUseCount;
     @Shadow
@@ -78,9 +84,10 @@ public abstract class MixinEntityLivingBase extends MixinEntity {
     @Shadow
     public abstract int getItemInUseCount();
 
+    @Shadow public abstract void setSprinting(boolean p_setSprinting_1_);
+
     /**
      * @author CCBlueX
-     * @reason 1
      */
     @Overwrite
     protected void jump() {
@@ -112,6 +119,7 @@ public abstract class MixinEntityLivingBase extends MixinEntity {
 
     @Inject(method = "onLivingUpdate", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/EntityLivingBase;isJumping:Z", ordinal = 1))
     private void onJumpSection(CallbackInfo callbackInfo) {
+
         final LiquidWalk liquidWalk = (LiquidWalk) LiquidBounce.moduleManager.getModule(LiquidWalk.class);
 
         if (Objects.requireNonNull(liquidWalk).getState() && !isJumping && !isSneaking() && isInWater() &&
@@ -134,10 +142,21 @@ public abstract class MixinEntityLivingBase extends MixinEntity {
         if ((p_isPotionActive_1_ == MobEffects.NAUSEA || p_isPotionActive_1_ == MobEffects.BLINDNESS) && Objects.requireNonNull(antiBlind).getState() && antiBlind.getConfusionEffect().get())
             callbackInfoReturnable.setReturnValue(false);
     }
+
+    /**
+     * @author Liuli
+     */
     @Overwrite
     private int getArmSwingAnimationEnd() {
-        int speed = LiquidBounce.moduleManager.getModule(Animations.class).getState() ? 2 + (20 - Animations.SpeedSwing.get()) : 6;
-        return this.isPotionActive(MobEffects.SPEED) ? speed - (1 + this.getActivePotionEffect(MobEffects.SPEED).getAmplifier()) : (this.isPotionActive(MobEffects.SLOWNESS) ? speed + (1 + this.getActivePotionEffect(MobEffects.SLOWNESS).getAmplifier()) * 2 : speed);
+        int speed = this.isPotionActive(MobEffects.HASTE) ? 6 - (1 + this.getActivePotionEffect(MobEffects.HASTE).getAmplifier()) : (this.isPotionActive(MobEffects.MINING_FATIGUE) ? 6 + (1 + this.getActivePotionEffect(MobEffects.MINING_FATIGUE).getAmplifier()) * 2 : 6);
+
+        if (this.equals(Minecraft.getMinecraft().player)) {
+            Animations animations= (Animations) LiquidBounce.moduleManager.getModule(Animations.class);
+            if(animations.getState())
+                speed = (int) (speed * Animations.SpeedSwing.get());
+        }
+
+        return speed;
     }
     @Inject(method = "moveRelative", at = @At("HEAD"), cancellable = true)
     private void handleRotations(float strafe, float up, float forward, float friction, final CallbackInfo callbackInfo) {
@@ -146,8 +165,12 @@ public abstract class MixinEntityLivingBase extends MixinEntity {
             return;
 
         final StrafeEvent strafeEvent = new StrafeEvent(strafe, forward, friction);
-        LiquidBounce.eventManager.callEvent(strafeEvent);
+        final StrafeFix strafeFix = (StrafeFix) LiquidBounce.moduleManager.getModule(StrafeFix.class);
 
+        LiquidBounce.eventManager.callEvent(strafeEvent);
+        if (strafeFix.getDoFix()) { //Run StrafeFix process on Post Strafe 2023/02/15
+            strafeFix.runStrafeFixLoop(strafeFix.getSilentFix(), strafeEvent);
+        }
         if (strafeEvent.isCancelled())
             callbackInfo.cancel();
     }

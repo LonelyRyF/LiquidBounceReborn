@@ -5,6 +5,7 @@
  */
 package net.ccbluex.liquidbounce.injection.forge.mixins.entity;
 
+import cn.paimon.module.StrafeFix;
 import net.ccbluex.liquidbounce.LiquidBounce;
 import net.ccbluex.liquidbounce.event.*;
 import net.ccbluex.liquidbounce.features.module.modules.combat.KillAura;
@@ -272,12 +273,42 @@ public abstract class MixinEntityPlayerSP extends MixinAbstractClientPlayer {
         if (event.isCancelled())
             callbackInfoReturnable.setReturnValue(false);
     }
-
-    /**
-     * @author CCBlueX (superblaubeere27)
-     */
     @Overwrite
     public void onLivingUpdate() {
+
+        final StrafeFix strafeFix = (StrafeFix) LiquidBounce.moduleManager.getModule(StrafeFix.class);
+        final Sprint sprint = (Sprint) LiquidBounce.moduleManager.getModule(Sprint.class);
+
+
+        ++this.sprintingTicksLeft;
+
+        if (this.sprintToggleTimer > 0) {
+            --this.sprintToggleTimer;
+        }
+
+        boolean isSprintDirection = false;
+        boolean movingStat = Math.abs(this.movementInput.moveForward) > 0.05f || Math.abs(this.movementInput.moveStrafe) > 0.05f;
+
+        boolean runStrictStrafe = strafeFix.getDoFix() && !strafeFix.getSilentFix();
+        boolean noStrafe = RotationUtils.targetRotation == null || !strafeFix.getDoFix();
+        if (!movingStat || runStrictStrafe || noStrafe) {
+            isSprintDirection = this.movementInput.moveForward > 0.05f;
+        }else {
+            isSprintDirection = Math.abs(RotationUtils.getAngleDifference(MovementUtils.INSTANCE.getMovingYaw(), RotationUtils.targetRotation.getYaw())) < 67.0f;
+        }
+
+        if (!movingStat) {
+            isSprintDirection = false;
+        }
+        boolean attemptToggle = sprint.getState() || this.isSprinting() || this.mc.gameSettings.keyBindSprint.isKeyDown();
+        boolean baseIsMoving = (sprint.getState() && sprint.allDirectionsValue.get() && (Math.abs(this.movementInput.moveForward) > 0.05f || Math.abs(this.movementInput.moveStrafe) > 0.05f)) || isSprintDirection;
+        boolean baseSprintState = ((float) this.getFoodStats().getFoodLevel() > 6.0F || this.capabilities.allowFlying) && baseIsMoving;
+        if (baseSprintState && attemptToggle) {
+            this.setSprinting(true);
+        } else {
+            this.setSprinting(false);
+        }
+
         try {
             LiquidBounce.eventManager.callEvent(new UpdateEvent());
         } catch (Throwable e) {

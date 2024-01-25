@@ -18,12 +18,12 @@ import java.util.*
 @ModuleInfo(name = "AutoL", description = "AutoL. ", category = ModuleCategory.PLAYER)
 class AutoL : Module() {
     val modeValue = ListValue("Mode", arrayOf("Chinese", "English","zhuboMessage","yurluMessage","YuJiangJun","Ikun", "L","None","Text"), "None")
-    val lobbyValue = TextValue("Text", "More 2022/Genuine edition")
+    val lobbyValue = TextValue("Text", "FurrySense 2024/Genuine edition")
     private val prefix = BoolValue("@",true)
     private val delay = IntegerValue("Delay",100,0,2000)
     var index = 0
     var R = Random()
-    var abuse = arrayOf("More 2022/Genuine edition")
+    var abuse = arrayOf("FurrySense 2024/Genuine edition")
     var englishabuse = arrayOf("You are loser")
     private var target: IEntity? = null
     var kill = 0

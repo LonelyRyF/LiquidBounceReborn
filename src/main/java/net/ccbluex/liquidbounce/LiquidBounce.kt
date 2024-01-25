@@ -29,7 +29,7 @@ object LiquidBounce {
 
     // Client information
     const val CLIENT_NAME = "FurrySense"
-    const val CLIENT_VERSION = "v1.0"
+    const val CLIENT_VERSION = "v1.1"
     const val CLIENT_CREATOR = "CCBlueX"
     const val CLIENT_CLOUD = "https://cloud.liquidbounce.net/LiquidBounce"
 

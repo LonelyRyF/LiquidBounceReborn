@@ -100,7 +100,7 @@ class Text(x: Double = 10.0, y: Double = 10.0, scale: Float = 1F,
     private val display: String
         get() {
             val textContent = if (displayString.get().isEmpty() && !editMode)
-                "More | Fps:%fps% | %serverip%"
+                "FurrySense | Fps:%fps% | %serverip%"
             else
                 displayString.get()
 
