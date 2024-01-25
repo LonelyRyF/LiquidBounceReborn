@@ -3,6 +3,7 @@ package net.ccbluex.liquidbounce.features.module
 import cn.langya.*
 import cn.liying.module.combat.KillFix
 import cn.paimon.module.StrafeFix
+import cn.z7087.AirPlace
 import net.ccbluex.liquidbounce.LiquidBounce
 import net.ccbluex.liquidbounce.event.EventTarget
 import net.ccbluex.liquidbounce.event.KeyEvent
@@ -171,7 +172,8 @@ class ModuleManager : Listenable {
             HytKillAuraFix::class.java,
             GrimAC::class.java,
             SilentAura::class.java,
-            StrafeFix::class.java
+            StrafeFix::class.java,
+            AirPlace::class.java
         )
 
         registerModule(NoScoreboard)

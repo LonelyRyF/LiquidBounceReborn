@@ -20,8 +20,8 @@ import java.awt.Color
 
 @ModuleInfo(name = "BlockOverlay", description = "Allows you to change the design of the block overlay.", category = ModuleCategory.RENDER)
 class BlockOverlay : Module() {
-    private val colorRedValue = IntegerValue("R", 68, 0, 255)
-    private val colorGreenValue = IntegerValue("G", 117, 0, 255)
+    private val colorRedValue = IntegerValue("R", 255, 0, 255)
+    private val colorGreenValue = IntegerValue("G", 255, 0, 255)
     private val colorBlueValue = IntegerValue("B", 255, 0, 255)
     private val colorRainbow = BoolValue("Rainbow", false)
     val infoValue = BoolValue("Info", false)
@@ -90,7 +90,7 @@ class BlockOverlay : Module() {
                     scaledResolution.scaledHeight / 2 + 5F,
                     scaledResolution.scaledWidth / 2 + Fonts.roboto40.getStringWidth(info) + 2F,
                     scaledResolution.scaledHeight / 2 + 16F,
-                    3F, Color.BLACK.rgb, Color.BLACK.rgb
+                    3F,Color(0,0,0,80).rgb,Color(0,0,0,80).rgb
             )
 
             classProvider.getGlStateManager().resetColor()
