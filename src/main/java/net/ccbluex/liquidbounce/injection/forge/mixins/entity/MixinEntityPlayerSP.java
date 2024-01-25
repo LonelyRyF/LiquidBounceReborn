@@ -273,6 +273,11 @@ public abstract class MixinEntityPlayerSP extends MixinAbstractClientPlayer {
         if (event.isCancelled())
             callbackInfoReturnable.setReturnValue(false);
     }
+    /**
+     * @author
+     * @reason
+     * @null
+     */
     @Overwrite
     public void onLivingUpdate() {
 
@@ -399,7 +404,6 @@ public abstract class MixinEntityPlayerSP extends MixinAbstractClientPlayer {
             this.pushOutOfBlocks(this.posX + (double) this.width * 0.35D, axisalignedbb.minY + 0.5D, this.posZ - (double) this.width * 0.35D);
             this.pushOutOfBlocks(this.posX + (double) this.width * 0.35D, axisalignedbb.minY + 0.5D, this.posZ + (double) this.width * 0.35D);
         }
-        final Sprint sprint = (Sprint) LiquidBounce.moduleManager.getModule(Sprint.class);
 
         boolean flag4 = !sprint.foodValue.get() || (float) this.getFoodStats().getFoodLevel() > 6.0F || this.capabilities.allowFlying;
 

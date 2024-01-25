@@ -9,7 +9,10 @@ import net.ccbluex.liquidbounce.injection.backend.wrap
 import net.ccbluex.liquidbounce.injection.backend.utils.unwrap
 import net.ccbluex.liquidbounce.utils.block.BlockUtils
 import net.ccbluex.liquidbounce.utils.render.RenderUtils
+import net.ccbluex.liquidbounce.value.BoolValue
 import net.ccbluex.liquidbounce.value.FloatValue
+import net.minecraft.network.play.client.CPacketHeldItemChange
+import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock
 import net.minecraft.util.math.AxisAlignedBB
 import java.awt.Color
 import org.lwjgl.input.Keyboard
@@ -18,7 +21,7 @@ import org.lwjgl.input.Mouse
 @ModuleInfo(name = "HytAirPlace", description = "7087z", category = ModuleCategory.HYT)
 class AirPlace : Module() {
     private val range = FloatValue("Range", 4.5f, 2f, 8f)
-
+    private val fakeItem = BoolValue("FakeItem",false)
     private var hitResult: IMovingObjectPosition? = null
     private var blockPos: WBlockPos? = null
 
@@ -87,6 +90,12 @@ class AirPlace : Module() {
             mc.playerController.unwrap().pickItem(blockSlot)
             mc.playerController.onPlayerRightClick(thePlayer, theWorld, thePlayer.heldItem, blockPos!!, sideHit, hitVec)
             thePlayer.swingItem()
+
+            if(fakeItem.get()) {
+                mc2.connection!!.sendPacket(CPacketHeldItemChange(mc2.player.inventory.currentItem))
+                mc2.connection!!.sendPacket(CPacketHeldItemChange((mc2.player.inventory.currentItem + 1) % 9))
+            }
+
         }
     }
 
