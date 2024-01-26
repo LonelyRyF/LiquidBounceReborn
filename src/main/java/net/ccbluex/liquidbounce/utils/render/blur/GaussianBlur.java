@@ -16,7 +16,7 @@ import static org.lwjgl.opengl.GL20.glUniform1;
 
 public class GaussianBlur {
 
-    public static ShaderUtil blurShader = new ShaderUtil("furrysense/shader/fragment/gaussian.frag");
+    public static ShaderUtil blurShader = new ShaderUtil("lb/shader/fragment/gaussian.frag");
 
     public static Framebuffer framebuffer = new Framebuffer(1, 1, false);
 

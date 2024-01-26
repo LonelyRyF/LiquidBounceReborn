@@ -93,7 +93,7 @@ public class ShaderUtil {
     }
 
     public ShaderUtil(String fragmentShaderLoc) {
-        this(fragmentShaderLoc, "furrysense/shader/vertex.vsh");
+        this(fragmentShaderLoc, "lb/shader/vertex.vsh");
     }
 
     public static String readInputStream(InputStream inputStream) {

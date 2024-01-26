@@ -15,7 +15,7 @@ import static org.lwjgl.opengl.GL20.glUniform1;
 
 public class BloomUtil extends MinecraftInstance {
 
-    public static ShaderUtil gaussianBloom = new ShaderUtil("furrysense/shader/fragment/bloom.frag");
+    public static ShaderUtil gaussianBloom = new ShaderUtil("lb/shader/fragment/bloom.frag");
 
     public static Framebuffer framebuffer = new Framebuffer(1, 1, false);
 

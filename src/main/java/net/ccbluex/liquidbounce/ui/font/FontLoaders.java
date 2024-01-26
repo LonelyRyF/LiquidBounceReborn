@@ -20,7 +20,7 @@ public abstract class FontLoaders {
     public static FontDrawer getFont(String name, int size, boolean antiAliasing) {
         Font font;
         try {
-            font = Font.createFont(0, Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("furrysense/font/" + name + ".ttf")).getInputStream()).deriveFont(Font.PLAIN, (float) size);
+            font = Font.createFont(0, Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("lb/font/" + name + ".ttf")).getInputStream()).deriveFont(Font.PLAIN, (float) size);
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Error loading font");
