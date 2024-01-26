@@ -29,7 +29,7 @@ public final class SimpleFontManager implements FontManager {
 	}
 	//endregion
 
-	private static final String FONT_DIRECTORY = "furrysense/font/";
+	private static final String FONT_DIRECTORY = "lb/font/";
 	private final FontRegistry fonts = new FontRegistry();
 
 	@Override

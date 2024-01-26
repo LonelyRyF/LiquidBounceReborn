@@ -160,7 +160,7 @@ class ScoreboardElement(
                 for (domain in allowedDomains) {
                     if (name.contains(domain, true)) {
                         name = when (serverValue.get().toLowerCase()) {
-                            "clientname" -> "FurrySense"
+                            "clientname" -> "LiquidBounceReborn"
                             else -> "null"
                         }
                         listColor = Color(148,87,235).rgb

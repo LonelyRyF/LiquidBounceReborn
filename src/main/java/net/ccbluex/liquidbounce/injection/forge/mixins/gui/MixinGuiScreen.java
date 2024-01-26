@@ -84,7 +84,7 @@ public abstract class MixinGuiScreen {
         final ScaledResolution scaledResolution = new ScaledResolution(mc);
         final int width = scaledResolution.getScaledWidth();
         final int height = scaledResolution.getScaledHeight();
-        RenderUtils.drawImage(ClassProviderImpl.INSTANCE.createResourceLocation("furrysense/bg.png"), 0, 0, width, height);
+        RenderUtils.drawImage(ClassProviderImpl.INSTANCE.createResourceLocation("lb/bg.png"), 0, 0, width, height);
 
         ParticleUtils.drawParticles(Mouse.getX() * width / mc.displayWidth, height - Mouse.getY() * height / mc.displayHeight - 1);
         callbackInfo.cancel();

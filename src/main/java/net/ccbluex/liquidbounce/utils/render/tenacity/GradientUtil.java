@@ -14,8 +14,8 @@ import static net.ccbluex.liquidbounce.utils.render.tenacity.ColorUtil.interpola
 
 public class GradientUtil extends MinecraftInstance {
 
-    private static final ShaderUtil gradientMaskShader = new ShaderUtil("furrysense/shader/fragment/gradientmask.frag");
-    private static final ShaderUtil gradientShader = new ShaderUtil("furrysense/shader/fragment/gradient.frag");
+    private static final ShaderUtil gradientMaskShader = new ShaderUtil("lb/shader/fragment/gradientmask.frag");
+    private static final ShaderUtil gradientShader = new ShaderUtil("lb/shader/fragment/gradient.frag");
 
 
     public static void drawGradient(float x, float y, float width, float height, float alpha, Color bottomLeft, Color topLeft, Color bottomRight, Color topRight) {

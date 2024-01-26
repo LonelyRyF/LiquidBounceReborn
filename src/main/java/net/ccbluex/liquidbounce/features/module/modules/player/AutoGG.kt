@@ -19,8 +19,8 @@ class AutoGG : Module() {
 
     private val modeValue = ListValue("Server", arrayOf( "HuaYuTingBW","HuaYuTingSw","HuaYuTing16"), "HuaYuTingBW")
     private val prefix = BoolValue("@",true)
-    private val textValue = TextValue("Text", "[FurrySense]GG")
-    private val textValu = TextValue("Text2", "@我正在使用FurrySense")
+    private val textValue = TextValue("Text", "[LiquidBounceReborn]GG")
+    private val textValu = TextValue("Text2", "@我正在使用LiquidBounceReborn")
     var totalPlayed = 0
     var win = 0
     @EventTarget

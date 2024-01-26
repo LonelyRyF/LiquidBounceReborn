@@ -28,7 +28,7 @@ import java.util.Objects;
 
 public class ClickGui extends WrappedGuiScreen {
     public final List<Panel> panels = new ArrayList<>();
-    private final IResourceLocation hudIcon = classProvider.createResourceLocation("furrysense" + "/custom_hud_icon.png");
+    private final IResourceLocation hudIcon = classProvider.createResourceLocation("lb/custom_hud_icon.png");
     public Style style = new SlowlyStyle();
     private Panel clickedPanel;
     private int mouseX;

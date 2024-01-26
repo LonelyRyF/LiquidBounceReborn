@@ -15,7 +15,7 @@ public final class IconUtils {
 
     public static ByteBuffer[] getFavicon() {
         try {
-            return new ByteBuffer[] {readImageToBuffer(IconUtils.class.getResourceAsStream("/assets/minecraft/furrysense/icon_16x16.png")), readImageToBuffer(IconUtils.class.getResourceAsStream("/assets/minecraft/furrysense/icon_32x32.png"))};
+            return new ByteBuffer[] {readImageToBuffer(IconUtils.class.getResourceAsStream("/assets/minecraft/lb/icon_16x16.png")), readImageToBuffer(IconUtils.class.getResourceAsStream("/assets/minecraft/lb/icon_32x32.png"))};
         }catch(IOException e) {
             e.printStackTrace();
         }
