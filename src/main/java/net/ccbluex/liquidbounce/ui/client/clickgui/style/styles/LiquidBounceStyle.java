@@ -39,15 +39,12 @@ public class LiquidBounceStyle extends Style {
     @Override
     public void drawPanel(int mouseX, int mouseY, Panel panel) {
         RenderUtils.drawBorderedRect((float) panel.getX(), (float) panel.getY() - 3.0F, (float) panel.getX() + (float) panel.getWidth(), (float) panel.getY() + 17.0F, 3.0F, (new Color(97, 95, 95, 34)).getRGB(), (new Color(20, 20, 20, 174)).getRGB());
-//        RenderUtils.drawBorderedRect((float) panel.getX() - (panel.getScrollbar() ? 4 : 0), (float) panel.getY(), (float) panel.getX() + panel.getWidth(), (float) panel.getY() + 19 + panel.getFade(), 1F, new Color(255, 255, 255, 90).getRGB(), Integer.MIN_VALUE);
         float textWidth = Fonts.font35.getStringWidth("§f" + StringUtils.stripControlCodes(panel.getName()));
         Fonts.font35.drawString("§f" + panel.getName(), (int) (panel.getX() - (textWidth - 100.0F) / 2F), panel.getY() + 7, -16777216);
 
         if(panel.getScrollbar() && panel.getFade() > 0) {
             RenderUtils.drawRect((float) (panel.getX() - 2), (float) (panel.getY() + 21), (float) panel.getX(), (float) (panel.getY() + 16 + panel.getFade()), Integer.MAX_VALUE);
             RenderUtils.drawRect((float) (panel.getX() - 2), (float) (panel.getY() + 30) + ((float) panel.getFade() - 24.0F) / (float) (panel.getElements().size() - ((Integer) ((ClickGUI) Objects.requireNonNull(LiquidBounce.moduleManager.getModule(ClickGUI.class))).maxElementsValue.get()).intValue()) * (float) panel.getDragged() - 10.0F, (float) panel.getX(), (float) (panel.getY() + 40) + ((float) panel.getFade() - 24.0F) / (float) (panel.getElements().size() - ((Integer) ((ClickGUI) Objects.requireNonNull(LiquidBounce.moduleManager.getModule(ClickGUI.class))).maxElementsValue.get()).intValue()) * (float) panel.getDragged(), Integer.MIN_VALUE);
-//            RenderUtils.drawRect(panel.getX() - 2, panel.getY() + 21, panel.getX(), panel.getY() + 16 + panel.getFade(), Integer.MAX_VALUE);
-//            RenderUtils.drawRect(panel.getX() - 2, panel.getY() + 30 + (panel.getFade() - 24F) / (panel.getElements().size() - ((ClickGUI) LiquidBounce.moduleManager.getModule(ClickGUI.class)).maxElementsValue.get()) * panel.getDragged() - 10.0f, panel.getX(), panel.getY() + 40 + (panel.getFade() - 24.0f) / (panel.getElements().size() - ((ClickGUI) LiquidBounce.moduleManager.getModule(ClickGUI.class)).maxElementsValue.get()) * panel.getDragged(), Integer.MIN_VALUE);
             RenderUtils.drawBorderedRect((float) panel.getX(), (float) panel.getY() + 17.0F, (float) panel.getX() + (float) panel.getWidth(), (float) (panel.getY() + 19 + panel.getFade()), 3.0F, (new Color(33, 33, 33, 65)).getRGB(), (new Color(29, 29, 29, 86)).getRGB());
             RenderUtils.drawBorderedRect((float) panel.getX(), (float) (panel.getY() + 17 + panel.getFade()), (float) panel.getX() + (float) panel.getWidth(), (float) (panel.getY() + 19 + panel.getFade() + 5), 3.0F, (new Color(47, 46, 46, 0)).getRGB(), (new Color(20, 20, 20, 0)).getRGB());
         }
@@ -57,7 +54,6 @@ public class LiquidBounceStyle extends Style {
     public void drawDescription(int mouseX, int mouseY, String text) {
         int textWidth = Fonts.font35.getStringWidth(text);
 
-//        RenderUtils.drawBorderedRect(mouseX + 9, mouseY, mouseX + textWidth + 14, mouseY + Fonts.font35.getFontHeight() + 3, 1, new Color(255, 255, 255, 90).getRGB(), Integer.MIN_VALUE);
         RenderUtils.drawBorderedRect((float) (mouseX + 9), (float) mouseY, (float) (mouseX + textWidth + 14), (float) (mouseY + Fonts.font35.getFontHeight() + 3), 1.0F, (new Color(255, 255, 255, 89)).getRGB(), Integer.MIN_VALUE);
         GlStateManager.resetColor();
         Fonts.font35.drawString(text, mouseX + 12, mouseY + (Fonts.font35.getFontHeight()) / 2, Integer.MAX_VALUE);
@@ -96,7 +92,6 @@ public class LiquidBounceStyle extends Style {
                         if (moduleElement.getSettingsWidth() < textWidth + 8)
                             moduleElement.setSettingsWidth(textWidth + 8);
 
-//                        RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 4, yPos + 2, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth(), yPos + 14, Integer.MIN_VALUE);
                         RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 4), (float) (yPos + 2), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth(), (float) (yPos + 14), Integer.MIN_VALUE);
 
                         if (mouseX >= moduleElement.getX() + moduleElement.getWidth() + 4 && mouseX <= moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth() && mouseY >= yPos + 2 && mouseY <= yPos + 14) {
@@ -120,7 +115,6 @@ public class LiquidBounceStyle extends Style {
                         if(moduleElement.getSettingsWidth() < textWidth + 16)
                             moduleElement.setSettingsWidth(textWidth + 16);
 
-//                        RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 4, yPos + 2, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth(), yPos + 14, Integer.MIN_VALUE);
                         RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 4), (float) (yPos + 2), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth(), (float) (yPos + 14), Integer.MIN_VALUE);
 
                         GlStateManager.resetColor();
@@ -143,7 +137,6 @@ public class LiquidBounceStyle extends Style {
                                 moduleElement.setSettingsWidth(textWidth2 + 8);
 
                             if (listValue.openList) {
-//                                RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 4, yPos + 2, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth(), yPos + 14, Integer.MIN_VALUE);
                                 RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 4), (float) (yPos + 2), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth(), (float) (yPos + 14), Integer.MIN_VALUE);
 
                                 if(mouseX >= moduleElement.getX() + moduleElement.getWidth() + 4 && mouseX <= moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth() && mouseY >= yPos + 2 && mouseY <= yPos + 14) {
@@ -167,13 +160,10 @@ public class LiquidBounceStyle extends Style {
                         if(moduleElement.getSettingsWidth() < textWidth + 8)
                             moduleElement.setSettingsWidth(textWidth + 8);
 
-//                        RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 4, yPos + 2, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth(), yPos + 24, Integer.MIN_VALUE);
-//                        RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 8, yPos + 18, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth() - 4, yPos + 19, Integer.MAX_VALUE);
                         RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 4), (float) (yPos + 2), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth(), (float) (yPos + 24), Integer.MIN_VALUE);
                         RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 8), (float) (yPos + 18), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth() - 4.0F, (float) (yPos + 19), Integer.MAX_VALUE);
 
                         final float sliderValue = moduleElement.getX() + moduleElement.getWidth() + ((moduleElement.getSettingsWidth() - 12) * (floatValue.get() - floatValue.getMinimum()) / (floatValue.getMaximum() - floatValue.getMinimum()));
-//                        RenderUtils.drawRect(8 + sliderValue, yPos + 15, sliderValue + 11, yPos + 21, guiColor);
                         RenderUtils.drawRect(8.0F + sliderValue, (float) (yPos + 15), sliderValue + 11.0F, (float) (yPos + 21), guiColor);
 
                         if(mouseX >= moduleElement.getX() + moduleElement.getWidth() + 4 && mouseX <= moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth() - 4 && mouseY >= yPos + 15 && mouseY <= yPos + 21) {
@@ -194,13 +184,10 @@ public class LiquidBounceStyle extends Style {
                         if(moduleElement.getSettingsWidth() < textWidth + 8)
                             moduleElement.setSettingsWidth(textWidth + 8);
 
-//                        RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 4, yPos + 2, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth(), yPos + 24, Integer.MIN_VALUE);
-//                        RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 8, yPos + 18, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth() - 4, yPos + 19, Integer.MAX_VALUE);
                         RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 4), (float) (yPos + 2), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth(), (float) (yPos + 24), Integer.MIN_VALUE);
                         RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 8), (float) (yPos + 18), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth() - 4.0F, (float) (yPos + 19), Integer.MAX_VALUE);
 
                         final float sliderValue = moduleElement.getX() + moduleElement.getWidth() + ((moduleElement.getSettingsWidth() - 12) * (integerValue.get() - integerValue.getMinimum()) / (integerValue.getMaximum() - integerValue.getMinimum()));
-//                        RenderUtils.drawRect(8 + sliderValue, yPos + 15, sliderValue + 11, yPos + 21, guiColor);
                         RenderUtils.drawRect(8.0F + sliderValue, (float) (yPos + 15), sliderValue + 11.0F, (float) (yPos + 21), guiColor);
 
                         if(mouseX >= moduleElement.getX() + moduleElement.getWidth() + 4 && mouseX <= moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth() && mouseY >= yPos + 15 && mouseY <= yPos + 21) {
@@ -217,7 +204,6 @@ public class LiquidBounceStyle extends Style {
                         final FontValue fontValue = (FontValue) value;
                         final IFontRenderer fontRenderer = fontValue.get();
 
-//                        RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 4, yPos + 2, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth(), yPos + 14, Integer.MIN_VALUE);
                         RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 4), (float) (yPos + 2), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth(), (float) (yPos + 14), Integer.MIN_VALUE);
 
 
@@ -288,7 +274,6 @@ public class LiquidBounceStyle extends Style {
                         if (moduleElement.getSettingsWidth() < textWidth + 8)
                             moduleElement.setSettingsWidth(textWidth + 8);
 
-//                        RenderUtils.drawRect(moduleElement.getX() + moduleElement.getWidth() + 4, yPos + 2, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth(), yPos + 14, Integer.MIN_VALUE);
                         RenderUtils.drawRect((float) (moduleElement.getX() + moduleElement.getWidth() + 4), (float) (yPos + 2), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth(), (float) (yPos + 14), Integer.MIN_VALUE);
 
                         GlStateManager.resetColor();
@@ -306,7 +291,6 @@ public class LiquidBounceStyle extends Style {
                 rightMouseDown = Mouse.isButtonDown(1);
 
                 if(moduleElement.getSettingsWidth() > 0F && yPos > moduleElement.getY() + 4)
-//                    RenderUtils.drawBorderedRect(moduleElement.getX() + moduleElement.getWidth() + 4, moduleElement.getY() + 6, moduleElement.getX() + moduleElement.getWidth() + moduleElement.getSettingsWidth(), yPos + 2, 1F, Integer.MIN_VALUE, 0);
                     RenderUtils.drawBorderedRect((float) (moduleElement.getX() + moduleElement.getWidth() + 4), (float) (moduleElement.getY() + 6), (float) (moduleElement.getX() + moduleElement.getWidth()) + moduleElement.getSettingsWidth(), (float) (yPos + 2), 1.0F, Integer.MIN_VALUE, 0);
 
             }
