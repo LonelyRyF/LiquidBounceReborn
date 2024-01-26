@@ -66,9 +66,9 @@ idea {
 
 
 
-version = "build"
-group = "cn.langya"
-archivesBaseName = 'FurrySense'
+version = "b74"
+group = "net.ccbluex.liquidbounce"
+archivesBaseName = 'LiquidBounceReborn'
 
 minecraft {
     version = "1.12.2-14.23.5.2768"
