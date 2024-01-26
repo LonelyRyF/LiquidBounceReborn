@@ -70,7 +70,7 @@ object LiquidBounce {
         isStarting = true
 
         Display.setTitle("LiquidBounceReborn")
-        displayTray("Furry","啊啊啊我是果糖含量的狗!",TrayIcon.MessageType.INFO)
+        displayTray("狼牙土豆","啊啊啊我是果糖含量的狗!",TrayIcon.MessageType.INFO)
 
         val start = System.currentTimeMillis()
 
