@@ -45,8 +45,8 @@ class SilentAura : Module() {
     private val minCPSValue = IntegerValue("MinCPS", 5, 0, 19)
 
     //攻击距离
-    val groudRangeValue = FloatValue("GroundRange", 3F, 3F, 8F)
-    val airRangeValue = FloatValue("AirRange", 3F, 3F, 8F)
+    private val groudRangeValue = FloatValue("GroundRange", 3F, 3F, 8F)
+    private val airRangeValue = FloatValue("AirRange", 3F, 3F, 8F)
 
     //攻击是否穿墙
     private val throughWalls = BoolValue("ThroughWalls", true)
@@ -93,7 +93,7 @@ class SilentAura : Module() {
     private val attackTimer = MSTimer()
     var target: IEntityLivingBase? = null
     private var click = 0
-    var blocking = false
+    private var blocking = false
 
     @EventTarget
     fun onStrafe(event: StrafeEvent) {
@@ -176,7 +176,7 @@ class SilentAura : Module() {
     }
 
     private fun getRange(): Float {
-        return if(mc.thePlayer!!.isAirBorne) airRangeValue.get() else groudRangeValue.get()
+        return if(mc2.player.isAirBorne) airRangeValue.get() else groudRangeValue.get()
     }
 
     // CPS
