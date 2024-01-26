@@ -111,7 +111,7 @@ public class ShaderUtil extends MinecraftInstance {
     }
 
     public ShaderUtil(String fragmentShaderLoc) {
-        this(fragmentShaderLoc, "lb/shader/vertex.vsh");
+        this(fragmentShaderLoc, "furrysense/shader/vertex.vsh");
     }
 
     public static void drawQuads(float x, float y, float width, float height) {

@@ -53,7 +53,7 @@ public class Title extends Module {
 
     @Override
     public void onDisable() {
-            Display.setTitle("LiquidBounceReborn");
+            Display.setTitle("FurrySense");
         }
 
 }

@@ -12,11 +12,11 @@ import static net.minecraft.client.renderer.GlStateManager.resetColor;
 
 public class RoundedUtil {
 
-    private static final ShaderUtil roundedTexturedShader = new ShaderUtil("lb/shader/fragment/roundrecttextured.frag");
+    private static final ShaderUtil roundedTexturedShader = new ShaderUtil("furrysense/shader/fragment/roundrecttextured.frag");
     private static final ShaderUtil roundedGradientShader = new ShaderUtil("roundedRectGradient");
     public static ShaderUtil roundedShader = new ShaderUtil("roundedRect");
     private static ShaderUtil circle = new ShaderUtil("circle");
-    public static ShaderUtil roundedOutlineShader = new ShaderUtil("lb/shader/fragment/roundrectoutline.frag");
+    public static ShaderUtil roundedOutlineShader = new ShaderUtil("furrysense/shader/fragment/roundrectoutline.frag");
 
     public static void drawRound(float x, float y, float width, float height, float radius, Color color) {
         drawRound(x, y, width, height, radius, false, color);

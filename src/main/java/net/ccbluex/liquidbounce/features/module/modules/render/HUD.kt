@@ -111,7 +111,7 @@ class HUD : Module() {
         if (state && blurValue.get() && !mc.entityRenderer.isShaderActive() && event.guiScreen != null &&
             !(classProvider.isGuiChat(event.guiScreen) || classProvider.isGuiHudDesigner(event.guiScreen))
         ) mc.entityRenderer.loadShader(classProvider.createResourceLocation("More" + "/blur.json")) else if (mc.entityRenderer.shaderGroup != null &&
-            mc.entityRenderer.shaderGroup!!.shaderGroupName.contains("lb/blur.json")
+            mc.entityRenderer.shaderGroup!!.shaderGroupName.contains("furrysense/blur.json")
         ) mc.entityRenderer.stopUseShader()
     }
 

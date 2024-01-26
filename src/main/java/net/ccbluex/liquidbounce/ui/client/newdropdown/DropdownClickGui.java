@@ -24,7 +24,7 @@ import java.util.List;
 public class DropdownClickGui extends WrappedGuiScreen {
     private Animation openingAnimation;
     private EaseBackIn fadeAnimation;
-    private final IResourceLocation hudIcon = classProvider.createResourceLocation("lb/custom_hud_icon.png");
+    private final IResourceLocation hudIcon = classProvider.createResourceLocation("furrysense/custom_hud_icon.png");
 
     private DecelerateAnimation configHover;
 
