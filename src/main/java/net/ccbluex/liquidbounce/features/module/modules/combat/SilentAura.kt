@@ -386,5 +386,5 @@ class SilentAura : Module() {
     }
 
     override val tag: String
-        get() = "${getRange()}-$click"
+        get() = click.toString()
 }
