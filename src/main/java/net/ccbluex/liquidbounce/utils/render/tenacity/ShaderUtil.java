@@ -52,7 +52,7 @@ public class ShaderUtil implements Utils {
     }
 
     public ShaderUtil(String fragmentShaderLoc) {
-        this(fragmentShaderLoc, "lb/shader/vertex.vsh");
+        this(fragmentShaderLoc, "furrysense/shader/vertex.vsh");
     }
 
 

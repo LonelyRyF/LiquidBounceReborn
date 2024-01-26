@@ -30,7 +30,7 @@ object Remapper {
             srgFile.createNewFile()
 
             ClientUtils.getLogger().info("[Remapper] Extracting $srgName srg...")
-            FileUtils.copyInputStreamToFile(Minecraft.getMinecraft().resourceManager.getResource(ResourceLocation("lb/mcp-stable_22.srg")).inputStream, srgFile)
+            FileUtils.copyInputStreamToFile(Minecraft.getMinecraft().resourceManager.getResource(ResourceLocation("furrysense/mcp-stable_22.srg")).inputStream, srgFile)
 
         }
 

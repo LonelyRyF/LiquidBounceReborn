@@ -171,7 +171,7 @@ public class Fonts extends MinecraftInstance {
     private static IFontRenderer getFont(final String fontName, final int size) {
         Font font;
         try {
-            final InputStream inputStream = minecraft.getResourceManager().getResource(new ResourceLocation("lb/font/" + fontName)).getInputStream();
+            final InputStream inputStream = minecraft.getResourceManager().getResource(new ResourceLocation("furrysense/font/" + fontName)).getInputStream();
             Font awtClientFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
             awtClientFont = awtClientFont.deriveFont(Font.PLAIN, size);
             inputStream.close();

@@ -27,11 +27,16 @@ import java.awt.TrayIcon
 
 object LiquidBounce {
 
-
     // Client information
+<<<<<<< HEAD
     const val CLIENT_NAME = "LiquidBounceReborn"
     const val CLIENT_VERSION = "b74"
     const val CLIENT_CREATOR = "CCBlueX,LangYa"
+=======
+    const val CLIENT_NAME = "FurrySense"
+    const val CLIENT_VERSION = "v1.1"
+    const val CLIENT_CREATOR = "CCBlueX"
+>>>>>>> parent of eab9bdd (Fixxxxx)
     const val CLIENT_CLOUD = "https://cloud.liquidbounce.net/LiquidBounce"
 
     var isStarting = false
@@ -53,7 +58,7 @@ object LiquidBounce {
     lateinit var wrapper: Wrapper
 
 
-    private fun displayTray(Title: String, Text: String, type: TrayIcon.MessageType?) {
+    fun displayTray(Title: String, Text: String, type: TrayIcon.MessageType?) {
         val tray = SystemTray.getSystemTray()
         val image = Toolkit.getDefaultToolkit().createImage("icon.png")
         val trayIcon = TrayIcon(image, "Tray Demo")
@@ -69,8 +74,13 @@ object LiquidBounce {
     fun startClient() {
         isStarting = true
 
+<<<<<<< HEAD
         Display.setTitle("LiquidBounceReborn")
         displayTray("狼牙土豆","啊啊啊我是果糖含量的狗!",TrayIcon.MessageType.INFO)
+=======
+        Display.setTitle("FurrySense")
+        displayTray("Furry","啊啊啊我是果糖含量的狗!",TrayIcon.MessageType.INFO)
+>>>>>>> parent of eab9bdd (Fixxxxx)
 
         val start = System.currentTimeMillis()
 

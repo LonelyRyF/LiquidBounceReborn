@@ -55,7 +55,7 @@ class HytAutoLeos : Module() {
                 LiquidBounce.moduleManager[Velocity::class.java].state = false
                 check = false
             }
-            Chat.print("§b[LiquidBounceReborn] §d为你的装备保驾护航")
+            Chat.print("§b[FurrySense] §d为你的装备保驾护航")
         }
     }
 

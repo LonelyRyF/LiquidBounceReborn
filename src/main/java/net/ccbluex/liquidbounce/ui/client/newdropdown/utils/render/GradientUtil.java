@@ -13,8 +13,8 @@ import java.awt.*;
 
 public class GradientUtil implements Utils {
 
-    private static final ShaderUtil gradientMaskShader = new ShaderUtil("lb/Shaderss/gradientmask.frag");
-    private static final ShaderUtil gradientShader = new ShaderUtil("lb/Shaderss/gradient.frag");
+    private static final ShaderUtil gradientMaskShader = new ShaderUtil("furrysense/Shaderss/gradientmask.frag");
+    private static final ShaderUtil gradientShader = new ShaderUtil("furrysense/Shaderss/gradient.frag");
 
 
 

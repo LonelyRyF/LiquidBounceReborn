@@ -10,8 +10,8 @@ import java.util.List;
 public class KawaseBlur extends MinecraftInstance {
 
     private static final List<Framebuffer> framebufferList = new ArrayList<>();
-    public static ShaderUtil kawaseDown = new ShaderUtil("lb/shader/fragment/kawasedown.frag");
-    public static ShaderUtil kawaseUp = new ShaderUtil("lb/shader/fragment/kawaseup.frag");
+    public static ShaderUtil kawaseDown = new ShaderUtil("furrysense/shader/fragment/kawasedown.frag");
+    public static ShaderUtil kawaseUp = new ShaderUtil("furrysense/shader/fragment/kawaseup.frag");
     public static Framebuffer framebuffer = new Framebuffer(1, 1, false);
     private static int currentIterations;
 
