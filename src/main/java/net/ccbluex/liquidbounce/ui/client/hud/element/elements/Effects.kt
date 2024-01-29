@@ -1,9 +1,9 @@
 package net.ccbluex.liquidbounce.ui.client.hud.element.elements
 
+import cn.langya.utils.GaussianBlur
 import cn.liying.utils.PotionData
 import cn.liying.utils.Translate
 import net.ccbluex.liquidbounce.api.minecraft.potion.IPotion
-import net.ccbluex.liquidbounce.features.module.modules.render.CustomColor
 import net.ccbluex.liquidbounce.ui.client.hud.element.Border
 import net.ccbluex.liquidbounce.ui.client.hud.element.Element
 import net.ccbluex.liquidbounce.ui.client.hud.element.ElementInfo
@@ -11,7 +11,6 @@ import net.ccbluex.liquidbounce.ui.font.FontLoaders
 import net.ccbluex.liquidbounce.ui.font.Fonts
 import net.ccbluex.liquidbounce.utils.render.RenderUtils
 import net.ccbluex.liquidbounce.utils.render.RoundedUtil
-import net.ccbluex.liquidbounce.utils.render.tenacity.ColorUtil
 import net.ccbluex.liquidbounce.utils.timer.MSTimer
 import net.ccbluex.liquidbounce.value.BoolValue
 import net.minecraft.client.renderer.GlStateManager
@@ -24,6 +23,8 @@ import kotlin.math.pow
 @ElementInfo(name = "Effects")
 class Effects(x: Double =97.0, y: Double = 141.0, scale: Float = 1F) : Element() {
 
+    val blur = BoolValue("Blur",true)
+
     private val potionMap: MutableMap<IPotion, PotionData?> = HashMap()
 
     var timer = MSTimer()
@@ -34,16 +35,27 @@ class Effects(x: Double =97.0, y: Double = 141.0, scale: Float = 1F) : Element()
     /**
      * Draw the entity.
      */
-    override fun drawElement(): Border? {
+    override fun drawElement(): Border {
         GlStateManager.pushMatrix()
         var namewith = 0f
         var namewith3 = 0f
         var namehight = 0f
         var y = 0
 
+        if(blur.get()) {
+            GaussianBlur.startBlur()
+            RoundedUtil.drawRound(12.20f, -7.32f, easingwith, easinghealth, 0f, Color(0, 0, 0, 80))
+            GaussianBlur.endBlur(2f, 2f)
+        }
+
         RoundedUtil.drawRound(12.20f, -7.32f, easingwith, easinghealth,0f, Color(0,0,0,80))
         GlStateManager.resetColor()
 
+        RoundedUtil.drawRound(12.20f, -7.32f, easingwith, 2f, 0f, Color(0, 0, 200))
+        GlStateManager.resetColor()
+        RoundedUtil.drawRound(12.20f, -7.32f, easingwith, easinghealth, 0f, blur.get(), Color(0, 0, 0, 80))
+        GlStateManager.resetColor()
+        RenderUtils.drawShadow(12.20f, -7.32f, easingwith, easinghealth)
         for (potionEffect in Objects.requireNonNull(mc.thePlayer)!!.activePotionEffects) {
 
             val potion = functions.getPotionById(potionEffect.potionID)

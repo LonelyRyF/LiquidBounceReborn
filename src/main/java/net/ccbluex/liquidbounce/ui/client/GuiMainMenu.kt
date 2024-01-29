@@ -11,7 +11,7 @@ class GuiMainMenu : WrappedGuiScreen() {
         representedScreen.buttonList.add(classProvider.createGuiButton(1, representedScreen.width / 2 - 50, defaultHeight, 100, 20, I18n.format("Singleplayer")))
         representedScreen.buttonList.add(classProvider.createGuiButton(2, representedScreen.width / 2 - 50, defaultHeight + 24, 100, 20, I18n.format("Multiplayer")))
         representedScreen.buttonList.add(classProvider.createGuiButton(3, representedScreen.width / 2 - 50, defaultHeight + 24*2, 100, 20, "AltManager"))
-        representedScreen.buttonList.add(classProvider.createGuiButton(4, representedScreen.width / 2 - 50, defaultHeight + 24*3, 100, 20, I18n.format("Options...")))
+        representedScreen.buttonList.add(classProvider.createGuiButton(4, representedScreen.width / 2 - 50, defaultHeight + 24*3, 100, 20, I18n.format("Options")))
         representedScreen.buttonList.add(classProvider.createGuiButton(5, representedScreen.width / 2 - 50, defaultHeight + 24*4, 100, 20, I18n.format("Quit Game")))
         super.initGui()
     }

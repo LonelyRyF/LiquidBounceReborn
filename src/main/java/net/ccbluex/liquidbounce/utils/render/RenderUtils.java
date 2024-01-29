@@ -41,6 +41,21 @@ public final class RenderUtils extends MinecraftInstance {
     private static final int[] DISPLAY_LISTS_2D = new int[4];
     public static int deltaTime;
 
+
+    public static Framebuffer createFrameBuffer(Framebuffer framebuffer, boolean depth) {
+        if (needsNewFramebuffer(framebuffer)) {
+            if (framebuffer != null) {
+                framebuffer.deleteFramebuffer();
+            }
+            return new Framebuffer(mc2.displayWidth, mc2.displayHeight, depth);
+        }
+        return framebuffer;
+    }
+
+    public static boolean needsNewFramebuffer(Framebuffer framebuffer) {
+        return framebuffer == null || framebuffer.framebufferWidth != mc2.displayWidth || framebuffer.framebufferHeight != mc2.displayHeight;
+    }
+
     public static Color getColor(final int color) {
         final int f = color >> 24 & 0xFF;
         final int f2 = color >> 16 & 0xFF;

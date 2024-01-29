@@ -3,7 +3,7 @@
  * A free half-open source mixin-based injection hacked client for Minecraft using Minecraft Forge.
  * https://github.com/SkidderRyF/ColorByte/
  */
-package cn.langya
+package cn.langya.module
 
 import net.ccbluex.liquidbounce.LiquidBounce
 import net.ccbluex.liquidbounce.event.EntityKilledEvent

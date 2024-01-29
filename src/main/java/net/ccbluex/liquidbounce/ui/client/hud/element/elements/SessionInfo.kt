@@ -1,5 +1,6 @@
 package net.ccbluex.liquidbounce.ui.client.hud.element.elements
 
+import cn.langya.utils.GaussianBlur
 import cn.liying.utils.info.Recorder
 import cn.liying.utils.info.Recorder.killCounts
 import net.ccbluex.liquidbounce.ui.client.hud.element.Border
@@ -8,6 +9,7 @@ import net.ccbluex.liquidbounce.ui.client.hud.element.ElementInfo
 import net.ccbluex.liquidbounce.ui.font.Fonts
 import net.ccbluex.liquidbounce.utils.render.RenderUtils
 import net.ccbluex.liquidbounce.utils.render.RoundedUtil
+import net.ccbluex.liquidbounce.value.BoolValue
 import net.ccbluex.liquidbounce.value.FontValue
 import net.ccbluex.liquidbounce.value.ListValue
 import java.awt.Color
@@ -17,6 +19,8 @@ import java.util.*
 @ElementInfo(name = "SessionInfo")
 class SessionInfo(x: Double = 10.0, y: Double = 10.0, scale: Float = 1F) : Element(x, y, scale) {
     private val GameInfo = ListValue("Mode", arrayOf("Normal"), "Normal")
+    val blur = BoolValue("Blur",true)
+    val shaodw = BoolValue("Shadow",true)
     private var fontValue = FontValue("Font", Fonts.productSans35)
     val DATE_FORMAT = SimpleDateFormat("HH:mm:ss")
 
@@ -25,7 +29,14 @@ class SessionInfo(x: Double = 10.0, y: Double = 10.0, scale: Float = 1F) : Eleme
         val y2 = fontRenderer.fontHeight * 5 + 11.0.toInt()
         val x2 = 140.0.toInt()
         if(GameInfo.get().equals("normal" , true)){
-            //drawShadow
+            if(blur.get()) {
+                GaussianBlur.startBlur()
+                RoundedUtil.drawRound(-2f, -2f, x2.toFloat(), y2.toFloat(),2f,Color(0,0,0,80))
+                GaussianBlur.endBlur(2f, 2f)
+            }
+            if(shaodw.get()) {
+                RenderUtils.drawShadow(-2f, -2f, x2.toFloat(), y2.toFloat())
+            }
             RoundedUtil.drawRound(-2f, -2f, x2.toFloat(), y2.toFloat(),2f,Color(0,0,0,80))
             RenderUtils.resetColor()
 

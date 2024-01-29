@@ -1,8 +1,9 @@
 package net.ccbluex.liquidbounce.features.module
 
-import cn.langya.*
-import cn.liying.module.combat.KillFix
+import cn.langya.module.*
+import cn.paimon.module.Disabler
 import cn.paimon.module.StrafeFix
+import cn.unknow.HytStuck
 import cn.z7087.AirPlace
 import net.ccbluex.liquidbounce.LiquidBounce
 import net.ccbluex.liquidbounce.event.EventTarget
@@ -44,7 +45,6 @@ class ModuleManager : Listenable {
             AntiHunger::class.java,
             HytGapple::class.java,
             CustomFont::class.java,
-            KillFix::class.java,
             HytScaffoldFix::class.java,
             CustomHUD::class.java,
             Title::class.java,
@@ -165,7 +165,7 @@ class ModuleManager : Listenable {
             SpeedMine::class.java,
             AutoHead::class.java,
             Animations::class.java,
-            Test::class.java,
+           // Test::class.java,
             BlurSettings::class.java,
             HytAntiLag::class.java,
             HytAntiFakePlayer::class.java,
@@ -173,7 +173,9 @@ class ModuleManager : Listenable {
             GrimAC::class.java,
             SilentAura::class.java,
             StrafeFix::class.java,
-            AirPlace::class.java
+            AirPlace::class.java,
+            Disabler::class.java,
+            HytStuck::class.java
         )
 
         registerModule(NoScoreboard)

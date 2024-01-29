@@ -1,4 +1,4 @@
-package cn.langya
+package cn.langya.module
 
 import net.ccbluex.liquidbounce.LiquidBounce
 import net.ccbluex.liquidbounce.event.EventTarget

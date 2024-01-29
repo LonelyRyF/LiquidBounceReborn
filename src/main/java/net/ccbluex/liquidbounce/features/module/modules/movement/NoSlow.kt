@@ -101,8 +101,8 @@ class NoSlow : Module() {
 
     val killAura = LiquidBounce.moduleManager[KillAura::class.java] as KillAura
 
-    fun isBlock(): Boolean {
-        return thePlayerisBlocking || killAura.blockingStatus
+    fun isUsing(): Boolean {
+        return thePlayerisBlocking || killAura.blockingStatus && mc2.player.isHandActive
     }
 
     @EventTarget
@@ -118,20 +118,20 @@ class NoSlow : Module() {
                 }
             }
             "hyt" -> {
-                if (mc.thePlayer!!.isBlocking || isBlock() && event.eventState == EventState.PRE) {
+
+                if (isUsing() && event.eventState == EventState.PRE) {
                     mc2.connection!!.sendPacket(CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN))
                     mc2.connection!!.sendPacket(CPacketHeldItemChange((mc2.player.inventory.currentItem + 1) % 9))
                     mc2.connection!!.sendPacket(CPacketConfirmTransaction(Integer.MAX_VALUE, 32767.toShort(), true))
                     mc2.connection!!.sendPacket(CPacketHeldItemChange(mc2.player.inventory.currentItem))
                 }
 
-                if (mc.thePlayer!!.isBlocking || isBlock() && event.eventState == EventState.POST) {
+                if (isUsing() && event.eventState == EventState.POST) {
                     mc2.connection!!.sendPacket(CPacketPlayerTryUseItem(EnumHand.MAIN_HAND))
                 }
 
             }
             "grimac" -> {
-                if (!mc2.player.isActiveItemStackBlocking) return
                 if (event.eventState == EventState.PRE) {
                     mc.netHandler.addToSendQueue(classProvider.createCPacketPlayerDigging(
                         ICPacketPlayerDigging.WAction.RELEASE_USE_ITEM, WBlockPos.ORIGIN, classProvider.getEnumFacing(
@@ -158,7 +158,7 @@ class NoSlow : Module() {
             }
 
             "aac5" -> {
-                if (mc.thePlayer!!.isUsingItem || mc.thePlayer!!.isBlocking || isBlock()) {
+                if (mc.thePlayer!!.isUsingItem || mc.thePlayer!!.isBlocking || isUsing()) {
                     mc.netHandler.addToSendQueue(createUseItemPacket(mc.thePlayer!!.inventory.getCurrentItemInHand(), WEnumHand.MAIN_HAND))
                     mc.netHandler.addToSendQueue(createUseItemPacket(mc.thePlayer!!.inventory.getCurrentItemInHand(), WEnumHand.OFF_HAND))
                 }

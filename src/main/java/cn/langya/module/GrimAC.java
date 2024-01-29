@@ -1,4 +1,4 @@
-package cn.langya;
+package cn.langya.module;
 
 // 魔改了派蒙神的东西
 

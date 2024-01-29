@@ -10,6 +10,7 @@ import net.ccbluex.liquidbounce.ui.font.FontLoaders
 import net.ccbluex.liquidbounce.utils.MinecraftInstance
 import net.ccbluex.liquidbounce.utils.render.RenderUtils
 import net.ccbluex.liquidbounce.utils.render.RoundedUtil
+import net.ccbluex.liquidbounce.value.BoolValue
 import net.minecraft.client.entity.AbstractClientPlayer
 import net.minecraft.client.entity.EntityPlayerSP
 import net.minecraft.client.gui.Gui
@@ -27,6 +28,8 @@ import java.awt.Color
 
 @ElementInfo("TargetHUD")
 class TargetHUD : Element() {
+
+    val blur = BoolValue("Blur",true)
 
     override fun drawElement(): Border {
         val mc = mc2
