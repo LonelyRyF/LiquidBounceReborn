@@ -23,7 +23,6 @@ import kotlin.math.pow
 @ElementInfo(name = "Effects")
 class Effects(x: Double =97.0, y: Double = 141.0, scale: Float = 1F) : Element() {
 
-    val blur = BoolValue("Blur",true)
 
     private val potionMap: MutableMap<IPotion, PotionData?> = HashMap()
 
@@ -41,12 +40,6 @@ class Effects(x: Double =97.0, y: Double = 141.0, scale: Float = 1F) : Element()
         var namewith3 = 0f
         var namehight = 0f
         var y = 0
-
-        if(blur.get()) {
-            GaussianBlur.startBlur()
-            RoundedUtil.drawRound(12.20f, -7.32f, easingwith, easinghealth, 0f, Color(0, 0, 0, 80))
-            GaussianBlur.endBlur(2f, 2f)
-        }
 
         RoundedUtil.drawRound(12.20f, -7.32f, easingwith, easinghealth,0f, Color(0,0,0,80))
         GlStateManager.resetColor()

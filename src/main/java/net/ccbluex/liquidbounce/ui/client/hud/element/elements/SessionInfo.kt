@@ -19,7 +19,6 @@ import java.util.*
 @ElementInfo(name = "SessionInfo")
 class SessionInfo(x: Double = 10.0, y: Double = 10.0, scale: Float = 1F) : Element(x, y, scale) {
     private val GameInfo = ListValue("Mode", arrayOf("Normal"), "Normal")
-    val blur = BoolValue("Blur",true)
     val shaodw = BoolValue("Shadow",true)
     private var fontValue = FontValue("Font", Fonts.productSans35)
     val DATE_FORMAT = SimpleDateFormat("HH:mm:ss")
@@ -29,11 +28,7 @@ class SessionInfo(x: Double = 10.0, y: Double = 10.0, scale: Float = 1F) : Eleme
         val y2 = fontRenderer.fontHeight * 5 + 11.0.toInt()
         val x2 = 140.0.toInt()
         if(GameInfo.get().equals("normal" , true)){
-            if(blur.get()) {
-                GaussianBlur.startBlur()
-                RoundedUtil.drawRound(-2f, -2f, x2.toFloat(), y2.toFloat(),2f,Color(0,0,0,80))
-                GaussianBlur.endBlur(2f, 2f)
-            }
+
             if(shaodw.get()) {
                 RenderUtils.drawShadow(-2f, -2f, x2.toFloat(), y2.toFloat())
             }
